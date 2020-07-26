@@ -1,0 +1,35 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ counter }}</p>
+  <button v-on:click="addStep(5, $event)">Add 1</button>
+  <p v-on:mousemove="updateXY">
+    Mouse: {{ x }} e {{ y }}
+    <span v-on:mousemove.stop="">Stop Here!!</span>
+  </p>
+  <input type="text" v-on:keyup.a.d="displayAlert">
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      x: 0,
+      y: 0
+    },
+    methods: {
+      addStep(step, e) {
+        console.log(e)
+        this.counter += step
+      },
+      updateXY(event) {
+        this.x = event.clientX
+        this.y = event.clientY
+      },
+      displayAlert() {
+        alert("I was shown!!!")
+      }
+    }
+  })
+</script>

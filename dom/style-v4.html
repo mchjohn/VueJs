@@ -1,0 +1,56 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+  .boxes {
+    display: flex;
+    justify-content: space-between;
+  }
+  .demo {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+  }
+  .c1 {
+    background-color: red;
+  }
+  .c2 {
+    background-color: green;
+  }
+  .c3 {
+    background-color: blue;
+  }
+  .spin {
+    transform: rotate(45deg);
+  }
+</style>
+
+<div id="app">
+  <div class="boxes">
+    <div class="demo" :style="{'backgroundColor': color}"></div>
+    <div class="demo" :style="[myStyle, {height: myHeight}]"></div>
+    <div class="demo"></div>
+  </div>
+  <hr>
+  <input type="text" v-model="color">
+  <input type="text" v-model="myWidth">
+  <input type="text" v-model="myHeight">
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      color: 'red',
+      myWidth: 100,
+      myHeight: 20
+    },
+    computed: {
+      myStyle() {
+        return {
+          backgroundColor: this.color,
+          width: this.myWidth+'px'
+        }
+      }
+    }
+  })
+</script>
